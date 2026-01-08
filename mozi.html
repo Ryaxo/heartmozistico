@@ -76,8 +76,12 @@ body {
 
 <div id="heart">❤️</div>
 
+<audio id="musica" src="musica.mp3"></audio>
+    
 <script>
 
+let tocamusca = false;
+    
 const mensagens = [
     "Eu te amo 💖",
     "És a razão do meu sorriso 😊",
@@ -96,10 +100,17 @@ const mensagens = [
 const heart = document.getElementById("heart");
 
 heart.addEventListener("click", () => {
+    
+    if (!tocamusca) { 
+    const musica = document.getElementById("musica");
+    musica.volume = 0.3;
+    musica.play();
+    tocamusca = true;
+}
+    
     for (let i = 0; i < 25; i++) {
         criarMensagem();
         criarCoracao();
-        
         criarCoracaoRoxo();
     }
 });
@@ -145,3 +156,4 @@ function criarCoracaoRoxo() {
 
 </body>
 </html>
+
