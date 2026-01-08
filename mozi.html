@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Uma surpresa pátu ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+#heart {
+    font-size: 120px;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+    user-select: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.message {
+    position: absolute;
+    font-size: 22px;
+    color: white;
+    animation: floatUp 5s ease-out forwards;
+    pointer-events: none;
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.35),
+        0 0 1px rgba(0,0,0,0.25);
+}
+
+.heart-fall {
+    position: absolute;
+    font-size: 30px;
+    animation: fall 5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-120px);
+    }
+}
+
+@keyframes fall {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(150px) scale(0.5);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="heart">❤️</div>
+
+<script>
+
+const mensagens = [
+    "Eu te amo 💖",
+    "És a razão do meu sorriso 😊",
+    "Meu coração bate por ti ❤️",
+    "O raio de sol que ilumina o meu dia ☀️",
+    "Teu sorriso me encanta",
+    "Te amo patodavida 💕",
+    "Obrigado por existir 🌹",
+    "Te amo além do infinito ♾️",
+    "Obrigado por me inspirar 🌟",
+    "És o sonho bonito que sempre sonhei 🌠",
+    "A cor que colore os meus dias 🎨",
+    "Estar no meu abraço é o meu lugar favorito 🤗",
+];
+
+const heart = document.getElementById("heart");
+
+heart.addEventListener("click", () => {
+    for (let i = 0; i < 25; i++) {
+        criarMensagem();
+        criarCoracao();
+        
+        criarCoracaoRoxo();
+    }
+});
+
+function criarMensagem() {
+    const msg = document.createElement("div");
+    msg.className = "message";
+    msg.textContent = mensagens[Math.floor(Math.random() * mensagens.length)];
+
+    msg.style.left = Math.random() * window.innerWidth + "px";
+    msg.style.top = Math.random() * window.innerHeight + "px";
+
+    document.body.appendChild(msg);
+
+    setTimeout(() => msg.remove(), 6500);
+}
+
+function criarCoracao() {
+    const cor = document.createElement("div");
+    cor.className = "heart-fall";
+    cor.textContent = "❤️";
+
+    cor.style.left = Math.random() * window.innerWidth + "px";
+    cor.style.top = Math.random() * window.innerHeight + "px";
+
+    document.body.appendChild(cor);
+
+    setTimeout(() => cor.remove(), 6500);
+}
+
+function criarCoracaoRoxo() {
+    const cor = document.createElement("div");
+    cor.className = "heart-fall";
+    cor.textContent = "💜";
+
+    cor.style.left = Math.random() * window.innerWidth + "px";
+    cor.style.top = Math.random() * window.innerHeight + "px";
+
+    document.body.appendChild(cor);
+    setTimeout(() => cor.remove(), 6500);
+}
+</script>
+
+</body>
+</html>
